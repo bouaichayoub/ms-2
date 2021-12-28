@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.ms.demo.vo.CommandeVo;
 
-@FeignClient(name = "MS-COMMANDE", url = "http://localhost:8081/api/commande")
+//@FeignClient(name = "MS-COMMANDE", url = "http://localhost:8087/api/commande")
+@FeignClient(name = "MS-COMMANDE")
 public interface CommandeRequiered {
 
-	@GetMapping("/ref/{reference}")
+	@GetMapping("/api/commande/ref/{reference}")
 	public CommandeVo findByReference(@PathVariable String reference);
 	
 	@PutMapping("/")

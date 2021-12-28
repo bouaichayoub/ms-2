@@ -20,8 +20,6 @@ public class PaiementRest {
 	
 	@Autowired
 	private PaiementService paiementService; 
-	@Autowired
-	private CommandeRequiered commandeRequiered; 
 	
 	@GetMapping("/ref/{ref}")
 	public Paiement findByRef(@PathVariable String ref) {
@@ -34,13 +32,6 @@ public class PaiementRest {
 	
 	@PostMapping("/")
 	public int save(@RequestBody Paiement paiement){
-		CommandeVo commandeVo = commandeRequiered.findByReference(paiement.getCommandeRef());
-		if(findByRef(paiement.getRef()) != null) {
-			return -1;
-		}else if(commandeVo == null || commandeVo.getId() == null) {
-			return -2;
-		}else {
-			return paiementService.save(paiement);
-		}
+		return paiementService.save(paiement);
 	}
 }
